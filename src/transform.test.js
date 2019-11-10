@@ -22,23 +22,22 @@ it('given an empty stagedApply.roleRequirements, return an empty questionnaire a
   const result = transformData(input)
 
   expect(result).toEqual(expected)
-});
+})
 
 it('given one question, return transformed question, ', function () {
-  const input = {
-    stagedApply:
-      {
-        roleRequirements: {'question-1': 'IGNORED'}
-      }
-  }
+  const input = {stagedApply: {roleRequirements: {'question-1': 'IGNORED'}}}
+  const expected = {questionnaire: [{questionId: '1'}]}
 
   const result = transformData(input)
 
-  const expected = {
-    questionnaire: [
-      {questionId: '1'}
-    ]
-  }
+  expect(result).toEqual(expected)
+})
+
+it('given a question without the right format, ignores the question ', function () {
+  const input = {stagedApply: {roleRequirements: {'questionwithoutdash1': 'IGNORED'}}}
+  const expected  = {questionnaire: []}
+
+  const result = transformData(input)
 
   expect(result).toEqual(expected)
 });

@@ -3,10 +3,15 @@ export const transformData = (input) => {
 
   let questions = []
 
-  if (input && input.stagedApply && input.stagedApply.roleRequirements) {
-    Object.keys(input.stagedApply.roleRequirements).forEach((key) => {
+  let stagedApply = input.stagedApply;
+  let roleRequirements = stagedApply.roleRequirements
+
+  if (input && stagedApply && roleRequirements) {
+    Object.keys(roleRequirements).forEach((key) => {
       const questionId = key.split('-')[1]
-      questions.push({questionId: questionId})
+
+      if (questionId)
+        questions.push({questionId: questionId})
     })
 
     return {questionnaire: questions}
