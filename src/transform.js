@@ -1,1 +1,1 @@
-export const transformData = () => {}
+export const transformData = () => ({})
