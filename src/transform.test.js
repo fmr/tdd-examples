@@ -16,17 +16,28 @@ it('should fail when given undefined', function () {
 })
 
 it('given an empty stagedApply.roleRequirements, return an empty questionnaire array', function () {
+  const input = {stagedApply: {roleRequirements: {}}}
+  const expected = {questionnaire: []}
+
+  const result = transformData(input)
+
+  expect(result).toEqual(expected)
+});
+
+it('given one question, return transformed question, ', function () {
   const input = {
     stagedApply:
       {
-        roleRequirements: {}
+        roleRequirements: {'question-1': 'IGNORED'}
       }
   }
 
   const result = transformData(input)
 
   const expected = {
-    questionnaire: []
+    questionnaire: [
+      {questionId: '1'}
+    ]
   }
 
   expect(result).toEqual(expected)

@@ -1,8 +1,16 @@
 export const transformData = (input) => {
   if (!input) throw Error('need data')
 
-  if (input && input.stagedApply && input.stagedApply.roleRequirements)
-    return {questionnaire: []}
+  let questions = []
+
+  if (input && input.stagedApply && input.stagedApply.roleRequirements) {
+    Object.keys(input.stagedApply.roleRequirements).forEach((key) => {
+      const questionId = key.split('-')[1]
+      questions.push({questionId: questionId})
+    })
+
+    return {questionnaire: questions}
+  }
 
   return {}
 }
