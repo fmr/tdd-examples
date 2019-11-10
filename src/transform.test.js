@@ -14,3 +14,20 @@ it('given map, returns map', () => {
 it('should fail when given undefined', function () {
   expect(() => transformData(undefined)).toThrow('need data')
 })
+
+it('given an empty stagedApply.roleRequirements, return an empty questionnaire array', function () {
+  const input = {
+    stagedApply:
+      {
+        roleRequirements: {}
+      }
+  }
+
+  const result = transformData(input)
+
+  const expected = {
+    questionnaire: []
+  }
+
+  expect(result).toEqual(expected)
+});
