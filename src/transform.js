@@ -3,11 +3,8 @@ export const transformData = (input) => {
 
   let questions = []
 
-  let stagedApply = input.stagedApply;
-  let roleRequirements = stagedApply.roleRequirements
-
-  if (input && stagedApply && roleRequirements) {
-    Object.keys(roleRequirements).forEach((key) => {
+  if (input && input.stagedApply && input.stagedApply.roleRequirements) {
+    Object.keys(input.stagedApply.roleRequirements).forEach((key) => {
       const questionId = key.split('-')[1]
 
       if (questionId)
