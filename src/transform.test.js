@@ -26,7 +26,7 @@ it('given an empty stagedApply.roleRequirements, return an empty questionnaire a
 
 it('given one question, return transformed question', function () {
   const input = {stagedApply: {roleRequirements: {'question-1': 'IGNORED'}}}
-  const expected = {questionnaire: [{questionId: '1'}]}
+  const expected = {questionnaire: [{questionId: '1', answers: 'IGNORED'}]}
 
   const result = transformData(input)
 
@@ -44,9 +44,18 @@ it('given a question without the right format, ignores the question', function (
 
 it('given multiple questions, return transformed questions', function () {
   const input = {stagedApply: {roleRequirements: {'question-1': 'IGNORED', 'question-2': 'IGNORED'}}}
-  const expected = {questionnaire: [{questionId: '1'}, {questionId: '2'}]}
+  const expected = {questionnaire: [{questionId: '1', answers: 'IGNORED'}, {questionId: '2', answers: 'IGNORED'}]}
 
   const result = transformData(input)
 
   expect(result).toEqual(expected)
 })
+
+it('transforms answers', function () {
+  const input = {stagedApply: {roleRequirements: {'question-1': ['answer1']}}}
+  const expected = {questionnaire: [{questionId: '1', answers: ['answer1']}]}
+
+  const result = transformData(input)
+
+  expect(result).toEqual(expected)
+});
