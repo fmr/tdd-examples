@@ -4,7 +4,7 @@
   "description": "Test Driven Development - examples for induction",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --watch"
   },
   "author": "Francis Reyes <freyes@seek.com.au>",
   "license": "MIT",
