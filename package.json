@@ -1,0 +1,14 @@
+{
+  "name": "tdd-examples",
+  "version": "1.0.0",
+  "description": "Test Driven Development - examples for induction",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Francis Reyes <freyes@seek.com.au>",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^24.9.0"
+  }
+}
