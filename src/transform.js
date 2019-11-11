@@ -1,21 +1,16 @@
-export const transformData = (input) => {
-
-  if (!input) throw Error('need data')
-
-  let questions = []
-
+export function transformData(input) {
+  if (!input) {
+    throw Error("need data");
+  }
   if (input && input.stagedApply && input.stagedApply.roleRequirements) {
     const { roleRequirements } = input.stagedApply;
 
-    Object.keys(roleRequirements).forEach((key) => {
-      const questionId = key.split('-')[1]
+    const questions = Object.keys(roleRequirements).map(key => {
+      const questionId = key.split('-')[1];
+      return { questionId, answers: roleRequirements[key] };
+    }).filter(question => question.questionId);
 
-      if (questionId)
-        questions.push({questionId: questionId, answers: roleRequirements[key]})
-    })
-
-    return {questionnaire: questions}
+    return { questionnaire: questions};
   }
-
-  return {}
+  return {};
 }
