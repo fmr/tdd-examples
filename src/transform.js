@@ -1,6 +1,6 @@
 export function transformData(input) {
   if (!input) {
-    throw Error('need data');
+    throw Error("need data");
   }
 
   const { stagedApply: { roleRequirements } = {} } = input;
@@ -11,7 +11,7 @@ export function transformData(input) {
 
   const questions = Object.keys(roleRequirements)
     .map(key => {
-      const [, questionId] = key.split('-');
+      const [, questionId] = key.split("-");
       return { questionId, answers: roleRequirements[key] };
     })
     .filter(question => question.questionId);

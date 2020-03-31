@@ -1,21 +1,22 @@
-import { transformData } from './transform';
+import { transformData } from "./transform";
+
 
 //can get rid of this now
-it('can call the function', () => {
+it("can call the function", () => {
   transformData({});
 });
 
-it('given map, returns map', () => {
+it("given map, returns map", () => {
   const result = transformData({});
 
   expect(result).toEqual({});
 });
 
-it('should fail when given undefined', function() {
-  expect(() => transformData(undefined)).toThrow('need data');
+it("should fail when given undefined", () => {
+  expect(() => transformData(undefined)).toThrow("need data");
 });
 
-it('given an empty stagedApply.roleRequirements, return an empty questionnaire array', function() {
+it("given an empty stagedApply.roleRequirements, return an empty questionnaire array", () => {
   const input = { stagedApply: { roleRequirements: {} } };
   const expected = { questionnaire: [] };
 
@@ -24,20 +25,20 @@ it('given an empty stagedApply.roleRequirements, return an empty questionnaire a
   expect(result).toEqual(expected);
 });
 
-it('given one question, return transformed question', function() {
+it("given one question, return transformed question", () => {
   const input = {
-    stagedApply: { roleRequirements: { 'question-1': 'IGNORED' } }
+    stagedApply: { roleRequirements: { "question-1": "IGNORED" } }
   };
-  const expected = { questionnaire: [{ questionId: '1', answers: 'IGNORED' }] };
+  const expected = { questionnaire: [{ questionId: "1", answers: "IGNORED" }] };
 
   const result = transformData(input);
 
   expect(result).toEqual(expected);
 });
 
-it('given a question without the right format, ignores the question', function() {
+it("given a question without the right format, ignores the question", () => {
   const input = {
-    stagedApply: { roleRequirements: { questionwithoutdash1: 'IGNORED' } }
+    stagedApply: { roleRequirements: { questionwithoutdash1: "IGNORED" } }
   };
   const expected = { questionnaire: [] };
 
@@ -46,16 +47,16 @@ it('given a question without the right format, ignores the question', function()
   expect(result).toEqual(expected);
 });
 
-it('given multiple questions, return transformed questions', function() {
+it("given multiple questions, return transformed questions", () => {
   const input = {
     stagedApply: {
-      roleRequirements: { 'question-1': 'IGNORED', 'question-2': 'IGNORED' }
+      roleRequirements: { "question-1": "IGNORED", "question-2": "IGNORED" }
     }
   };
   const expected = {
     questionnaire: [
-      { questionId: '1', answers: 'IGNORED' },
-      { questionId: '2', answers: 'IGNORED' }
+      { questionId: "1", answers: "IGNORED" },
+      { questionId: "2", answers: "IGNORED" }
     ]
   };
 
@@ -64,12 +65,12 @@ it('given multiple questions, return transformed questions', function() {
   expect(result).toEqual(expected);
 });
 
-it('transforms answers', function() {
+it("transforms answers", () => {
   const input = {
-    stagedApply: { roleRequirements: { 'question-1': ['answer1'] } }
+    stagedApply: { roleRequirements: { "question-1": ["answer1"] } }
   };
   const expected = {
-    questionnaire: [{ questionId: '1', answers: ['answer1'] }]
+    questionnaire: [{ questionId: "1", answers: ["answer1"] }]
   };
 
   const result = transformData(input);
