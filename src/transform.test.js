@@ -1,6 +1,5 @@
 import { transformData } from "./transform";
 
-
 //can get rid of this now
 it("can call the function", () => {
   transformData({});
@@ -16,8 +15,8 @@ it("should fail when given undefined", () => {
   expect(() => transformData(undefined)).toThrow("need data");
 });
 
-it("given an empty stagedApply.roleRequirements, return an empty questionnaire array", () => {
-  const input = { stagedApply: { roleRequirements: {} } };
+it("given an empty roleRequirements, return an empty questionnaire array", () => {
+  const input = { roleRequirements: {} };
   const expected = { questionnaire: [] };
 
   const result = transformData(input);
@@ -27,7 +26,7 @@ it("given an empty stagedApply.roleRequirements, return an empty questionnaire a
 
 it("given one question, return transformed question", () => {
   const input = {
-    stagedApply: { roleRequirements: { "question-1": "IGNORED" } }
+    roleRequirements: { "question-1": "IGNORED" },
   };
   const expected = { questionnaire: [{ questionId: "1", answers: "IGNORED" }] };
 
@@ -38,7 +37,7 @@ it("given one question, return transformed question", () => {
 
 it("given a question without the right format, ignores the question", () => {
   const input = {
-    stagedApply: { roleRequirements: { questionwithoutdash1: "IGNORED" } }
+    roleRequirements: { questionwithoutdash1: "IGNORED" },
   };
   const expected = { questionnaire: [] };
 
@@ -49,15 +48,13 @@ it("given a question without the right format, ignores the question", () => {
 
 it("given multiple questions, return transformed questions", () => {
   const input = {
-    stagedApply: {
-      roleRequirements: { "question-1": "IGNORED", "question-2": "IGNORED" }
-    }
+    roleRequirements: { "question-1": "IGNORED", "question-2": "IGNORED" },
   };
   const expected = {
     questionnaire: [
       { questionId: "1", answers: "IGNORED" },
-      { questionId: "2", answers: "IGNORED" }
-    ]
+      { questionId: "2", answers: "IGNORED" },
+    ],
   };
 
   const result = transformData(input);
@@ -67,10 +64,10 @@ it("given multiple questions, return transformed questions", () => {
 
 it("transforms answers", () => {
   const input = {
-    stagedApply: { roleRequirements: { "question-1": ["answer1"] } }
+    roleRequirements: { "question-1": ["answer1"] },
   };
   const expected = {
-    questionnaire: [{ questionId: "1", answers: ["answer1"] }]
+    questionnaire: [{ questionId: "1", answers: ["answer1"] }],
   };
 
   const result = transformData(input);

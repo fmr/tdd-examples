@@ -3,18 +3,18 @@ export function transformData(input) {
     throw Error("need data");
   }
 
-  const { stagedApply: { roleRequirements } = {} } = input;
+  const { roleRequirements } = input;
 
   if (!roleRequirements) {
     return {};
   }
 
   const questions = Object.keys(roleRequirements)
-    .map(key => {
+    .map((key) => {
       const [, questionId] = key.split("-");
       return { questionId, answers: roleRequirements[key] };
     })
-    .filter(question => question.questionId);
+    .filter((question) => question.questionId);
 
   return { questionnaire: questions };
 }
