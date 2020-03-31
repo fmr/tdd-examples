@@ -15,5 +15,4 @@ const exampleOutput = {
       answers: ["some expo testing"],
     },
   ],
-  timeApplied: "2019-11-10T01:57:24.793Z",
 };
