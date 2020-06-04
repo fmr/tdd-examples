@@ -4,7 +4,7 @@
   "description": "Test Driven Development - examples for induction",
   "main": "index.js",
   "scripts": {
-    "test": "jest --watch"
+    "test": "jest"
   },
   "author": "Francis Reyes <freyes@seek.com.au>",
   "license": "MIT",
