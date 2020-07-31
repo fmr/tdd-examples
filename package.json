@@ -11,7 +11,7 @@
   "devDependencies": {
     "@babel/core": "7.11.0",
     "@babel/preset-env": "7.11.0",
-    "jest": "26.2.1",
+    "jest": "26.2.2",
     "prettier": "2.0.5"
   }
 }
