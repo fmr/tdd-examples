@@ -9,8 +9,8 @@
   "author": "Francis Reyes <freyes@seek.com.au>",
   "license": "MIT",
   "devDependencies": {
-    "@babel/core": "7.11.6",
-    "@babel/preset-env": "7.11.5",
+    "@babel/core": "7.12.0",
+    "@babel/preset-env": "7.12.0",
     "jest": "26.5.3",
     "prettier": "2.1.2"
   }
